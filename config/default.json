@@ -1,5 +1,0 @@
-{
-  "port": 5000,
-  "jwtSecret": "nikolai mern project",
-  "mongooseUri": "mongodb+srv://panek:1234qwer@cluster0.j8aap.mongodb.net/appBase?retryWrites=true&w=majority"
-}
