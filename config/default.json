@@ -1,0 +1,4 @@
+{
+  "port": 5000,
+  "mongooseUri": "mongodb+srv://panek:1234qwer@cluster0.j8aap.mongodb.net/appBase?retryWrites=true&w=majority"
+}
