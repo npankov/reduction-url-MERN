@@ -2,6 +2,7 @@
 
 .btn {
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 input.auth-input {
@@ -20,4 +21,8 @@ input.auth-input:focus {
 
 input.auth-input:focus + label {
     color: #ffffff!important;
+}
+
+.nav-wrapper {
+    padding: 0 2rem;
 }
