@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHttp } from '../hooks/http.hook';
+import { useMessage } from '../hooks/message.hook';
+import { AuthContext } from '../context/AuthContext';
 
 export const AuthPage = () => {
   const [form, setForm] = useState({
     email: '',
     password: ''
   });
-  const { loading, error, request } = useHttp();
+  const { loading, error, request, cleanError } = useHttp();
+  const message = useMessage();
+  const auth = useContext(AuthContext);
+
+  useEffect(() => {
+    message(error);
+    cleanError();
+  }, [error, message, cleanError]);
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value })
@@ -15,9 +24,15 @@ export const AuthPage = () => {
   const registerHandler = async () => {
     try {
       const data = await request('/api/auth/register', 'POST', {...form});
-    } catch (e) {
+      message(data.message);
+    } catch (e) {}
+  }
 
-    }
+  const loginHandler = async () => {
+    try {
+      const data = await request('/api/auth/login', 'POST', {...form});
+      auth.login(data.token, data.userId);
+    } catch (e) {}
   }
 
   return (
@@ -43,7 +58,7 @@ export const AuthPage = () => {
               <div className="input-field">
                 <input placeholder="Entrer votre mot de passe"
                        id="password"
-                       type="text"
+                       type="password"
                        name="password"
                        className="auth-input"
                        onChange={changeHandler}
@@ -55,6 +70,7 @@ export const AuthPage = () => {
 
           <div className="card-action">
             <button className="btn yellow darken-4"
+                    onClick={loginHandler}
                     disabled={loading}
             >
               Se connecter
