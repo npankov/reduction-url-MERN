@@ -26,3 +26,13 @@ input.auth-input:focus + label {
 .nav-wrapper {
     padding: 0 2rem;
 }
+
+.col.s8 {
+    padding-top: 2rem;
+}
+
+.preloader-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
