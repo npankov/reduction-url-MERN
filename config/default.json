@@ -1,6 +1,6 @@
 {
-  "port": 5000,
+  "port": 80,
   "jwtSecret": "nikolai mern project",
   "mongooseUri": "mongodb+srv://panek:1234qwer@cluster0.j8aap.mongodb.net/appBase?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:5000"
+  "baseUrl": "https://npankov.github.io/reduction-url-MERN/"
 }
